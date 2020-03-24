@@ -16,13 +16,24 @@ class TweetViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
+    @IBOutlet weak var TweetTextView: Tweet!
+    
     @IBAction func cancel(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
     
     @IBAction func tweet(_ sender: Any) {
+        if (!TweetTextView.text.isEmpty){
+            TwiiterAPICaller.client?.postTweet(TweetString: TweetTextView.text, success: {
+                dismiss(animated: true, completion: nil)
+            }, failure: { (error) in
+                print("Error posting tweet",\(error)"),
+                dismiss(animated: true, completion: nil)
+            })
+        }else {
+            dismiss(animated: true, completion: nil)
+        }
     }
     /*
     // MARK: - Navigation
