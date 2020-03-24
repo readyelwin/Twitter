@@ -109,6 +109,9 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Tweet" style="plain" id="Dvd-2M-A32">
                             <color key="tintColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <connections>
+                                <segue destination="Nxa-Y9-Ux0" kind="presentation" id="0oa-Vw-Uj0"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
@@ -116,16 +119,16 @@
             </objects>
             <point key="canvasLocation" x="648.79999999999995" y="45.42728635682159"/>
         </scene>
-        <!--View Controller-->
+        <!--Tweet View Controller-->
         <scene sceneID="cTH-dj-meP">
             <objects>
-                <viewController id="FYi-Mg-JEz" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="t7Z-EK-MMM">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                <viewController id="FYi-Mg-JEz" customClass="TweetViewController" customModule="Twitter" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="t7Z-EK-MMM" customClass="TweetCellTableViewCell" customModule="Twitter" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="krX-G5-zbu">
-                                <rect key="frame" x="0.0" y="44" width="375" height="128"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="krX-G5-zbu" customClass="Tweet">
+                                <rect key="frame" x="0.0" y="56" width="375" height="128"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="a4z-eQ-ptk"/>
@@ -146,9 +149,15 @@
                     <navigationItem key="navigationItem" id="aZK-6K-aRa">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="Y0P-Ar-9oB">
                             <color key="tintColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <connections>
+                                <action selector="cancel:" destination="FYi-Mg-JEz" id="7tD-Hq-1KI"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Tweet" id="6xp-iX-fCs">
                             <color key="tintColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <connections>
+                                <action selector="tweet:" destination="FYi-Mg-JEz" id="61L-Ia-pcR"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                 </viewController>
@@ -182,7 +191,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Nxa-Y9-Ux0" userLabel="Tweet Navigation Controller" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tWL-K3-Xp7">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.38285459527853649" green="0.73757053514980653" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
