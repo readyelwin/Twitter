@@ -14,14 +14,15 @@ class HomeTableViewController: UITableViewController {
     var numberOfTweet: Int!
     
     
-    func  MyReFreshControl; = UIRefreshControl()
     
-     override func viewDidLoad() {
+    func  MyReFreshControl; = UIRefreshControl()
+        
+    override func viewDidLoad() {
         super.viewDidLoad()
         loadtweets()
     
     func myRefreshControl;.addTarget(self, action: #selector(loadtweets) , for: .valueChanged)
-    tableView.refreshControl = myRefreshControl
+        tableView.refreshControl = myRefreshControl
     
     
     }
@@ -45,7 +46,7 @@ class HomeTableViewController: UITableViewController {
                 
                 self.tableView.reloadData()
                 
-                self.myRefreshControl.endRefreshing
+                self.myRefreshControl.endRefreshing as! type?
                 
                 
             }, failure: { (<#Error#>) in
@@ -86,7 +87,7 @@ class HomeTableViewController: UITableViewController {
     
     
 func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath){
-        if indexPath.row + 1 == tweetArray.count {
+    if indexPath.row + 1 == tweetArray.count {
             loadMoreTweets()
         }
     }
@@ -101,8 +102,8 @@ func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forR
     
 
 func onLogout(_ sender: Any) {
-        TwitterAPICaller.client?.logout()
-        self.dismiss(animated: true, completion: nil)
+    TwitterAPICaller.client?.logout()
+    self.dismiss(animated: true, completion: nil)
         
         UserDefaults.standard.set(false, forKey: "userLoggedIn")
     }
