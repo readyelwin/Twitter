@@ -53,7 +53,7 @@
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tweetCell" rowHeight="170" id="7pF-eu-kgl" customClass="TweetCellTableViewCell" customModule="Twitter" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="170"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7pF-eu-kgl" id="CPE-Tz-Kde">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7pF-eu-kgl" id="CPE-Tz-Kde" customClass="TweetCellTableViewCell" customModule="Twitter" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="170"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
@@ -70,6 +70,12 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Tweet content" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jKZ-8K-syB">
+                                            <rect key="frame" x="73" y="38" width="286" height="16"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="15 minutes ago" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vEN-QG-Kag">
                                             <rect key="frame" x="259" y="-2" width="116" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -77,14 +83,6 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ksm-PJ-jt3" userLabel="favButton">
-                                            <rect key="frame" x="319" y="92" width="30" height="107"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="30" id="2kH-36-mwh"/>
-                                                <constraint firstAttribute="width" constant="30" id="EGp-kQ-bEb"/>
-                                            </constraints>
-                                            <state key="normal" image="favor-icon"/>
-                                        </button>
                                         <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x5d-en-I0G">
                                             <rect key="frame" x="252" y="98" width="53" height="101"/>
                                             <constraints>
@@ -94,13 +92,21 @@
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="vQ3-YD-scf"/>
                                             </constraints>
                                             <state key="normal" image="retweet-icon"/>
+                                            <connections>
+                                                <action selector="retweet:" destination="7pF-eu-kgl" eventType="touchUpInside" id="aTN-Os-cUW"/>
+                                            </connections>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Tweet content" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jKZ-8K-syB">
-                                            <rect key="frame" x="73" y="38" width="286" height="16"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ksm-PJ-jt3" userLabel="favButton">
+                                            <rect key="frame" x="319" y="92" width="30" height="107"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="2kH-36-mwh"/>
+                                                <constraint firstAttribute="width" constant="30" id="EGp-kQ-bEb"/>
+                                            </constraints>
+                                            <state key="normal" image="favor-icon"/>
+                                            <connections>
+                                                <action selector="favoriteTweet:" destination="7pF-eu-kgl" eventType="touchUpInside" id="lTD-uC-xmL"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="x5d-en-I0G" firstAttribute="top" secondItem="jKZ-8K-syB" secondAttribute="bottom" constant="10" id="1Xj-gY-t8u"/>
@@ -121,7 +127,9 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="favButton" destination="Ksm-PJ-jt3" id="mma-YR-GV3"/>
                                     <outlet property="profileImageView" destination="AtQ-ba-cVD" id="Ron-fo-XS5"/>
+                                    <outlet property="retweetButton" destination="x5d-en-I0G" id="78m-e1-poC"/>
                                     <outlet property="tweetContent" destination="jKZ-8K-syB" id="gXC-SM-8z8"/>
                                     <outlet property="userNameLabel" destination="Eo8-eH-thw" id="e1W-mU-arE"/>
                                 </connections>

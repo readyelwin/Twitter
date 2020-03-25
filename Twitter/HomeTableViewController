@@ -6,7 +6,7 @@
 //  Copyright © 2020 Dan. All rights reserved.
 //
 
-import UIKit
+import UIKit 
 
 class HomeTableViewController: UITableViewController {
     
@@ -23,6 +23,8 @@ class HomeTableViewController: UITableViewController {
     
     func myRefreshControl;.addTarget(self, action: #selector(loadtweets) , for: .valueChanged)
         tableView.refreshControl = myRefreshControl
+        self.tweetTable.rowHeight = UITableview.automaticDimension
+        self.tweetTable.estimatedRowHeight = 150
     
     
     }
@@ -129,6 +131,8 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
         if let imageData = data {
             cell.profileImageView.image = UIImage(data: imageData)
         }
+    
+        
         
         return cell
     }
